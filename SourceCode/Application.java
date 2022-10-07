@@ -28,18 +28,18 @@ public class Application {
         Listener listener = new Listener(listener_socket, neighbors);
         Thread ThreadListener = new Thread(listener);
         ThreadListener.start();
-        Thread.sleep(3000L);
+        Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
 
         generateSocketsForAllNeighbors();
 
         while (NetworkOperations.getSocketMapSize() < neighbors.size()) {
             System.out.println("Waiting");
-            Thread.sleep(3000L);
+            Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
         }
         ThreadListener.interrupt();
     }
 
-    private void generateSocketsForAllNeighbors() {
+    private void generateSocketsForAllNeighbors() throws InterruptedException, IOException {
         int index = 0;
         while (index < neighbors.size()) {
             if (!NetworkOperations.hasSocketEntry(neighbors.get(index)) && neighbors.get(index) > id) {
@@ -108,7 +108,7 @@ public class Application {
             thread.start();
             rcvThreadCollectionArray.add(thread);
         }
-        Thread.sleep(3000L);
+        Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
     }
 
     public static void main(String[] args) {
@@ -131,8 +131,10 @@ public class Application {
 
             while(!GlobalConfiguration.is_system_terminated()) {
             }
-            Thread.sleep(3000L);
-            System.exit(0);
+
+            Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
+            
+            System.exit(AppConstants.SUCCESSFULL_PROGRAM_TERMINATION_EXIT_CODE);
 
         } catch (IOException exp) {
             System.out.println("Exception Raised!");
@@ -143,7 +145,7 @@ public class Application {
             excp.printStackTrace();
         }
 
-        System.exit(0);
+        System.exit(AppConstants.SUCCESSFULL_PROGRAM_TERMINATION_EXIT_CODE);
     }
 
     private void termDetector() {
