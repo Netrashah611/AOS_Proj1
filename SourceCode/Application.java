@@ -147,11 +147,9 @@ public class Application {
     }
 
     private void termDetector() {
-        if (!checkInitial) {
-            return;
+        if (checkInitial) {
+            Thread thread = new Thread(new TermDetector(neighbors));
+            thread.start();
         }
-        TermDetector InitiateSnapShot = new TermDetector(neighbors);
-        Thread thread = new Thread(InitiateSnapShot);
-        thread.start();
     }
 }
