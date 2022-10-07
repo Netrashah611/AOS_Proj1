@@ -1,4 +1,4 @@
-# six global parameters (see above)
+# six global parameters
 5 6 10 100 2000 15
 
 # nodeID hostName listen Port
