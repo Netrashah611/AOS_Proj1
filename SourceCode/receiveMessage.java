@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class receiveMessage implements Runnable {
 
-    private static final int ID = GlobalConfiguration.id;
-    private static final int TOTAL_NODE_COUNT = GlobalConfiguration.map_size;
+    private static final int ID = ConfigurationClass.id;
+    private static final int TOTAL_NODE_COUNT = ConfigurationClass.map_size;
     private final ObjectInputStream inputStream;
     private final ArrayList<Integer> neighbors;
     private final int neighborCount;
@@ -52,14 +52,14 @@ public class receiveMessage implements Runnable {
                 launchSnapshotSender(neighborId, broadcastMarkerMsg);
             }
         }
-        GlobalConfiguration.setIsSystemTerminated(true);
+        ConfigurationClass.setIsSystemTerminated(true);
         is_running_flag = false;
     }
 
 
     private void handleSnapshotReplyMessage(MessageModel message) {
         // Increment received reply count
-        GlobalConfiguration.incrementReceivedSnapshotReplies();
+        ConfigurationClass.incrementReceivedSnapshotReplies();
 
         if(message.getMessageType() == 4) {
             Logger.logMessage("Received reply from " + message.getId() + "of type ignore");
@@ -67,25 +67,25 @@ public class receiveMessage implements Runnable {
         }
         else {
             // LOCAL_STATE type
-            GlobalConfiguration.addLocalStateAll(message.getData());
+            ConfigurationClass.addLocalStateAll(message.getData());
             Logger.logMessage("Received process state reply from " + message.getId()
                     + " -> Received payload : " + message.getData());
         }
         // Check if all expected replies are received
-        if((GlobalConfiguration.getReceivedSnapshotReplyCount() == expectedSnapshotReplies)) { 
+        if((ConfigurationClass.getReceivedSnapshotReplyCount() == expectedSnapshotReplies)) { 
 
             // If node ID = 0, then set all replies received as true
             if (ID == 0) {
-                GlobalConfiguration.setsnaprep(true);
+                ConfigurationClass.setsnaprep(true);
             }
             else {
                 // Send consolidated local state reply
                 Logger.logMessage("Expected replies arrived, send cumulative process states");
-                ArrayList<local_state> snapshotPayload = new ArrayList<>();
-                snapshotPayload.addAll(GlobalConfiguration.getLocalStateAll());
+                ArrayList<ProcessState> snapshotPayload = new ArrayList<>();
+                snapshotPayload.addAll(ConfigurationClass.getLocalStateAll());
 
                 MessageModel replyStateMsg = new MessageModel(ID, snapshotPayload, 3);
-                int markerSenderNode = GlobalConfiguration.getMarkerSender();
+                int markerSenderNode = ConfigurationClass.getMarkerSender();
                 Logger.logMessage("Send snapshot reply to " + markerSenderNode
                         + " -> Message : " + replyStateMsg);
                 launchSnapshotSender(markerSenderNode, replyStateMsg);
@@ -103,18 +103,18 @@ public class receiveMessage implements Runnable {
      */
     private void handleApplicationMessage(MessageModel message) {
         // Application message
-        GlobalConfiguration.inc_rcv_msg_count();
+        ConfigurationClass.inc_rcv_msg_count();
         mergeVectorClocks(message);
 
         Logger.logMessage("Received application message : " + message
-                + "\nMerged clock : " + GlobalConfiguration.displayGlobalClock());
+                + "\nMerged clock : " + ConfigurationClass.displayGlobalClock());
 
-        if (GlobalConfiguration.check_active()) {
+        if (ConfigurationClass.check_active()) {
             // Already active, ignore the message
             Logger.logMessage("Already active...");
             return;
         }
-        if (GlobalConfiguration.get_sent_msg_count() >= GlobalConfiguration.maxNumber) {
+        if (ConfigurationClass.get_sent_msg_count() >= ConfigurationClass.maxNumber) {
             // Cannot become active, so ignore
             Logger.logMessage("Reached max send limit... cannot become active");
             return;
@@ -122,18 +122,13 @@ public class receiveMessage implements Runnable {
 
         // Can become active
         Logger.logMessage("Becoming active...");
-        GlobalConfiguration.set_active_status(true);
+        ConfigurationClass.set_active_status(true);
     }
 
-    /*
-     Processes incoming marker message
-     If it is a valid marker message, broadcast it to other neighbors, else discard
-     @param message {@link MessageModel}
-     */
     private void handleMarkerMessage(MessageModel message) {
-        GlobalConfiguration.incCurrentMarkersReceivedCount();
+        ConfigurationClass.incCurrentMarkersReceivedCount();
 
-        if (GlobalConfiguration.recmark.contains(message.getMessageId()) || ID == 0) {
+        if (ConfigurationClass.recmark.contains(message.getMessageId()) || ID == 0) {
             // Send ignore message
             Logger.logMessage("Marker message received from " + message.getId() + "... IGNORE");
             MessageModel replyMessage =  new MessageModel(ID, null, 4);
@@ -141,31 +136,31 @@ public class receiveMessage implements Runnable {
         }
         else {
             // Add own local state to the received local state list
-            GlobalConfiguration.recmark.add(message.getMessageId());
-            GlobalConfiguration.reset_snap();
-            GlobalConfiguration.setmarkermessagerecv(true);
+            ConfigurationClass.recmark.add(message.getMessageId());
+            ConfigurationClass.reset_snap();
+            ConfigurationClass.setmarkermessagerecv(true);
             int[] localClock = new int[TOTAL_NODE_COUNT];
-            synchronized (GlobalConfiguration.vector_clock) {
-                System.arraycopy(GlobalConfiguration.vector_clock, 0, localClock, 0, TOTAL_NODE_COUNT);
+            synchronized (ConfigurationClass.vector_clock) {
+                System.arraycopy(ConfigurationClass.vector_clock, 0, localClock, 0, TOTAL_NODE_COUNT);
             }
 
-            local_state myPayload = new local_state(ID, localClock,
-                    GlobalConfiguration.check_active(), GlobalConfiguration.get_sent_msg_count(),
-                    GlobalConfiguration.get_rcv_msg_count());
+            ProcessState myPayload = new ProcessState(ID, localClock,
+                    ConfigurationClass.check_active(), ConfigurationClass.get_sent_msg_count(),
+                    ConfigurationClass.get_rcv_msg_count());
             Logger.logMessage("Recording state : " + myPayload.toString());
-            GlobalConfiguration.add_localstate(myPayload);
+            ConfigurationClass.add_localstate(myPayload);
 
-            GlobalConfiguration.setMarkerSender(message.getId());
+            ConfigurationClass.setMarkerSender(message.getId());
             Logger.logMessage("Marker message received from " + message.getId() + "... BROADCAST\n"
                     + "Expecting replies = " + expectedSnapshotReplies);
             if(expectedSnapshotReplies == 0) {
                 // Send consolidated local state reply
                 Logger.logMessage("Received expected number of replies, send cumulative local states");
-                ArrayList<local_state> snapshotPayload = new ArrayList<>();
-                snapshotPayload.addAll(GlobalConfiguration.getLocalStateAll());
+                ArrayList<ProcessState> snapshotPayload = new ArrayList<>();
+                snapshotPayload.addAll(ConfigurationClass.getLocalStateAll());
 
                 MessageModel replyStateMsg = new MessageModel(ID, snapshotPayload, 3);
-                int markerSenderNode = GlobalConfiguration.getMarkerSender();
+                int markerSenderNode = ConfigurationClass.getMarkerSender();
                 Logger.logMessage("Send snapshot reply to " + markerSenderNode
                         + " -> Message : " + replyStateMsg);
                 launchSnapshotSender(markerSenderNode, replyStateMsg);
@@ -185,11 +180,11 @@ public class receiveMessage implements Runnable {
 
     private void mergeVectorClocks(MessageModel message) {
         int[] piggybackVectorClock = message.getData().get(0).getVectorClock();
-        synchronized (GlobalConfiguration.vector_clock) {
+        synchronized (ConfigurationClass.vector_clock) {
             for (int i = 0; i < TOTAL_NODE_COUNT; i++) {
-                GlobalConfiguration.vector_clock[i] = Math.max(GlobalConfiguration.vector_clock[i], piggybackVectorClock[i]);
+                ConfigurationClass.vector_clock[i] = Math.max(ConfigurationClass.vector_clock[i], piggybackVectorClock[i]);
             }
-            GlobalConfiguration.vector_clock[ID]++;
+            ConfigurationClass.vector_clock[ID]++;
         }
     }
 

@@ -8,16 +8,16 @@ public class MessageModel implements Serializable {
     private final int messageType;
     private int messageId = 0;
     private final int id;
-    private final ArrayList<local_state> data;
+    private final ArrayList<ProcessState> data;
     
 
-    public MessageModel(final int id, final ArrayList<local_state> payload, final int messageType) {
+    public MessageModel(final int id, final ArrayList<ProcessState> payload, final int messageType) {
         this.id = id;
         this.data = payload;
         this.messageType = messageType;
     }
 
-    public MessageModel(final int id, final ArrayList<local_state> payload , final int messageType, final int mId) {
+    public MessageModel(final int id, final ArrayList<ProcessState> payload , final int messageType, final int mId) {
         this.id = id;
         this.data = payload;
         this.messageType = messageType;
@@ -28,7 +28,7 @@ public class MessageModel implements Serializable {
         return id;
     }
 
-    public ArrayList<local_state> getData() {
+    public ArrayList<ProcessState> getData() {
         return data;
     }
 
