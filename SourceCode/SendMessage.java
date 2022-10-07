@@ -10,15 +10,15 @@ import java.util.Random;
  */
 public class SendMessage implements Runnable {
 
-    private static final ArrayList<Integer> NEIGHBOURS = GlobalConfiguration.getNeighborNodes();
-    private static final int ID = GlobalConfiguration.id;
-    private static final int TOTAL_NODE_COUNT = GlobalConfiguration.map_size;
-    private static final int MIN_PER_ACTIVE = GlobalConfiguration.minActive;
-    private static final int MAX_PER_ACTIVE = GlobalConfiguration.maxActive;
+    private static final ArrayList<Integer> NEIGHBOURS = ConfigurationClass.getNeighborNodes();
+    private static final int ID = ConfigurationClass.id;
+    private static final int TOTAL_NODE_COUNT = ConfigurationClass.map_size;
+    private static final int MIN_PER_ACTIVE = ConfigurationClass.minActive;
+    private static final int MAX_PER_ACTIVE = ConfigurationClass.maxActive;
     private static final int ACTIVE_DIFFERENCE = MAX_PER_ACTIVE - MIN_PER_ACTIVE;
-    private static final long MIN_SEND_DELAY = GlobalConfiguration.minSendDelay;
+    private static final long MIN_SEND_DELAY = ConfigurationClass.minSendDelay;
     private static final HashMap<Integer, ObjectOutputStream> OUTPUTSTREAM_MAP = NetworkOperations.writerStreamMap;
-    private static final Random RANDOM_SELECTION = GlobalConfiguration.RANDOM;
+    private static final Random RANDOM_SELECTION = ConfigurationClass.RANDOM;
     public static volatile boolean is_running_flag = true;
 
     public SendMessage() {
@@ -28,15 +28,15 @@ public class SendMessage implements Runnable {
     public void run() {
         while (is_running_flag) {
 
-            if (!GlobalConfiguration.check_active()) {
+            if (!ConfigurationClass.check_active()) {
                 continue;
             }
 
             int countMsgsToSend = RANDOM_SELECTION.nextInt(ACTIVE_DIFFERENCE) + MIN_PER_ACTIVE;
             sendApplicationMessages(countMsgsToSend);
-            GlobalConfiguration.set_active_status(false);
+            ConfigurationClass.set_active_status(false);
 
-            if (GlobalConfiguration.get_sent_msg_count() >= GlobalConfiguration.maxNumber) {
+            if (ConfigurationClass.get_sent_msg_count() >= ConfigurationClass.maxNumber) {
 
                 is_running_flag = false;
             }
@@ -62,12 +62,12 @@ public class SendMessage implements Runnable {
             ObjectOutputStream outputStream = OUTPUTSTREAM_MAP.get(nextNodeId);
             MessageModel message = null;
             int[] localClock = new int[TOTAL_NODE_COUNT];
-            synchronized (GlobalConfiguration.vector_clock) {
-                GlobalConfiguration.vector_clock[ID]++;
-                System.arraycopy(GlobalConfiguration.vector_clock, 0, localClock, 0, TOTAL_NODE_COUNT);
+            synchronized (ConfigurationClass.vector_clock) {
+                ConfigurationClass.vector_clock[ID]++;
+                System.arraycopy(ConfigurationClass.vector_clock, 0, localClock, 0, TOTAL_NODE_COUNT);
             }
-            local_state p = new local_state(localClock);
-            ArrayList<local_state> payloads = new ArrayList<>();
+            ProcessState p = new ProcessState(localClock);
+            ArrayList<ProcessState> payloads = new ArrayList<>();
             payloads.add(p);
             message = new MessageModel(ID, payloads, 1);
             
@@ -75,9 +75,9 @@ public class SendMessage implements Runnable {
                 synchronized (outputStream) {
                     outputStream.writeObject(message);
                 }
-                GlobalConfiguration.inc_sent_msg_count();
+                ConfigurationClass.inc_sent_msg_count();
 
-                if (GlobalConfiguration.get_sent_msg_count() >= GlobalConfiguration.maxNumber) {
+                if (ConfigurationClass.get_sent_msg_count() >= ConfigurationClass.maxNumber) {
                     is_running_flag = false;
                     break;
                 }

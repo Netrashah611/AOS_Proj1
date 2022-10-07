@@ -3,9 +3,9 @@ import java.util.*;
 public class TermDetector implements Runnable {
     private static int markerId = 1;
 
-    private static final long SNAPSHOT_DELAY = GlobalConfiguration.delay_snap;
-    private static final int ID = GlobalConfiguration.id;
-    private static final int TOTAL_NODE_COUNT = GlobalConfiguration.map_size;
+    private static final long SNAPSHOT_DELAY = ConfigurationClass.delay_snap;
+    private static final int ID = ConfigurationClass.id;
+    private static final int TOTAL_NODE_COUNT = ConfigurationClass.map_size;
 
     private final ArrayList<Integer> neighbors;
 
@@ -19,15 +19,15 @@ public class TermDetector implements Runnable {
         Logger.logMessage("Initiating snapshot...");
         // Add own local state to the received local state list
         int[] localClock = new int[TOTAL_NODE_COUNT];
-        synchronized (GlobalConfiguration.vector_clock) {
-            System.arraycopy(GlobalConfiguration.vector_clock, 0, localClock, 0, TOTAL_NODE_COUNT);
+        synchronized (ConfigurationClass.vector_clock) {
+            System.arraycopy(ConfigurationClass.vector_clock, 0, localClock, 0, TOTAL_NODE_COUNT);
         }
 
-        local_state myPayload = new local_state(ID, localClock,
-                GlobalConfiguration.check_active(), GlobalConfiguration.get_sent_msg_count(),
-                GlobalConfiguration.get_rcv_msg_count());
+        ProcessState myPayload = new ProcessState(ID, localClock,
+                ConfigurationClass.check_active(), ConfigurationClass.get_sent_msg_count(),
+                ConfigurationClass.get_rcv_msg_count());
         Logger.logMessage(myPayload.toString());
-        GlobalConfiguration.add_localstate(myPayload);
+        ConfigurationClass.add_localstate(myPayload);
         broadcastMessage(2);
         markerId++;
     }
@@ -52,15 +52,15 @@ public class TermDetector implements Runnable {
 
             sendMarkerMessages();
 
-            while (!GlobalConfiguration.is_snap_reply()) {
+            while (!ConfigurationClass.is_snap_reply()) {
                 // Continue to wait till all replies received
             }
 
-            TreeSet<local_state> replyPayloadList = new TreeSet<>(Comparator.comparingInt(local_state::getId));
-            replyPayloadList.addAll(GlobalConfiguration.getLocalStateAll());
+            TreeSet<ProcessState> replyPayloadList = new TreeSet<>(Comparator.comparingInt(ProcessState::getId));
+            replyPayloadList.addAll(ConfigurationClass.getLocalStateAll());
 
             StringBuilder builder = new StringBuilder("--------------Snapshot---------------\n");
-            for (local_state p : replyPayloadList) {
+            for (ProcessState p : replyPayloadList) {
                 builder.append(p.toString() + "\n");
             }
             builder.append("-------------------------------------");
@@ -69,7 +69,7 @@ public class TermDetector implements Runnable {
             if (is_system_terminated(replyPayloadList)) {
                 Logger.logMessage("********************System terminated...");
                 sendFinishMessages();
-                GlobalConfiguration.setIsSystemTerminated(true);
+                ConfigurationClass.setIsSystemTerminated(true);
                 break;
             }
             else {
@@ -77,7 +77,7 @@ public class TermDetector implements Runnable {
             }
 
             // Reset snapshot variables
-            GlobalConfiguration.reset_snap();
+            ConfigurationClass.reset_snap();
 
             // If system not yet terminated, sleep for constant time
             try {
@@ -92,21 +92,21 @@ public class TermDetector implements Runnable {
         }
     }
 
-    private boolean is_system_terminated(TreeSet<local_state> payloads) {
+    private boolean is_system_terminated(TreeSet<ProcessState> payloads) {
         return isAllPassive(payloads) && isChannelsEmpty(payloads);
     }
 
-    private boolean isAllPassive(TreeSet<local_state> payloads) {
+    private boolean isAllPassive(TreeSet<ProcessState> payloads) {
         boolean isAnyActive = false;
-        for (local_state payload : payloads) {
+        for (ProcessState payload : payloads) {
             isAnyActive |= payload.isActive();
         }
         return !isAnyActive;
     }
 
-    private boolean isChannelsEmpty(TreeSet<local_state> payloads) {
+    private boolean isChannelsEmpty(TreeSet<ProcessState> payloads) {
         int totalSentCount = 0, totalReceiveCount = 0;
-        for (local_state payload : payloads) {
+        for (ProcessState payload : payloads) {
             totalReceiveCount += payload.getReceivedMsgCount();
             totalSentCount += payload.getSentMsgCount();
         }
