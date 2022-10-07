@@ -1,0 +1,829 @@
+ Node -> 1  Host Node -> 10.176.69.34:5678
+  Neighbor Nodes -> [0, 2, 3]  Node Lists -> {0=10.176.69.32:3332
+, 1=10.176.69.34:5678
+, 2=10.176.69.35:5231
+, 3=10.176.69.36:3342
+, 4=10.176.69.37:5688
+}
+Connected - 0
+Socket connection in progress for 2
+Successfully created a socket connection -> 2
+Socket connection in progress for 3
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Successfully created a socket connection -> 3
+Received Application message : Id->2 Data -> [0 0 1 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 1 1 0 0 ]
+Becoming active !
+Received Application message : Id->2 Data -> [0 0 5 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 5 5 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 0 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 6 6 0 0 ]
+Already active ! 
+Received Application message : Id->0 Data -> [2 2 1 0 0] Type -> 1
+Merged clock : VectorClock -> [ 2 11 6 0 0 ]
+Becoming active !
+Recording State: 2 11 6 0 0
+Marker message received from 0-- BROADCAST
+Expecting replies = 2
+Marker message received from 3 -- Ignore !
+Received Application message : Id->0 Data -> [3 2 1 0 0] Type -> 1
+Merged clock : VectorClock -> [ 3 14 6 0 0 ]
+Already active ! 
+Marker message received from 2 -- Ignore !
+Received reply from 2of type ignore
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->1 Data -> [2 11 6 0 0] Type -> 3
+Received Application message : Id->0 Data -> [7 13 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 7 18 6 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [7 19 9 0 0] Type -> 1
+Merged clock : VectorClock -> [ 7 20 9 0 0 ]
+Already active ! 
+Received Application message : Id->0 Data -> [10 17 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 10 21 9 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [7 19 10 0 0] Type -> 1
+Merged clock : VectorClock -> [ 10 22 10 0 0 ]
+Becoming active !
+Received Application message : Id->0 Data -> [11 17 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 11 23 10 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [11 25 17 14 0] Type -> 1
+Merged clock : VectorClock -> [ 11 26 17 14 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->3 Data -> [11 24 14 16 0] Type -> 1
+Merged clock : VectorClock -> [ 11 27 17 16 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->2 Data -> [11 25 18 14 0] Type -> 1
+Merged clock : VectorClock -> [ 11 28 18 16 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->2 Data -> [11 25 23 20 0] Type -> 1
+Merged clock : VectorClock -> [ 11 29 23 20 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->2 Data -> [11 25 24 20 0] Type -> 1
+Merged clock : VectorClock -> [ 11 30 24 20 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->3 Data -> [12 25 20 24 7] Type -> 1
+Merged clock : VectorClock -> [ 12 31 24 24 7 ]
+Maximum send limit reached, can not become active
+Recording State: 12 31 24 24 7
+Marker message received from 0-- BROADCAST
+Expecting replies = 2
+Marker message received from 3 -- Ignore !
+Marker message received from 2 -- Ignore !
+Received reply from 3of type ignore
+Received reply from 2of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->1 Data -> [12 31 24 24 7] Type -> 3
+Received Application message : Id->3 Data -> [12 25 20 26 7] Type -> 1
+Merged clock : VectorClock -> [ 12 32 24 26 7 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->3 Data -> [12 25 20 28 10] Type -> 1
+Merged clock : VectorClock -> [ 12 33 24 28 10 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->0 Data -> [15 25 20 22 8] Type -> 1
+Merged clock : VectorClock -> [ 15 34 24 28 10 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->0 Data -> [19 25 20 25 13] Type -> 1
+Merged clock : VectorClock -> [ 19 35 24 28 13 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->0 Data -> [20 25 20 25 13] Type -> 1
+Merged clock : VectorClock -> [ 20 36 24 28 13 ]
+Maximum send limit reached, can not become active
+Recording State: 20 36 24 28 13
+Marker message received from 0-- BROADCAST
+Expecting replies = 2
+Marker message received from 2 -- Ignore !
+Marker message received from 3 -- Ignore !
+Received reply from 2of type ignore
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->1 Data -> [20 36 24 28 13] Type -> 3
