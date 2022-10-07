@@ -16,9 +16,9 @@ public class Application {
     public void initializeNode(int nodeId) throws IOException {
         this.id = nodeId;
         this.checkInitial = nodeId == 0; // boolean
-        this.node_lst = GlobalConfiguration.getNodeMap();
+        this.node_lst = ConfigurationClass.getNodeMap();
         this.host_node = node_lst.get(nodeId);
-        this.neighbors = GlobalConfiguration.getNeighborNodes(); // will return list of neighbours as array list
+        this.neighbors = ConfigurationClass.getNeighborNodes(); // will return list of neighbours as array list
         this.listener_socket = new ServerSocket(host_node.getPortNo()); // staring the server with given port number and connection is established
     }
 
@@ -114,8 +114,8 @@ public class Application {
     public static void main(String[] args) {
         int id = Integer.parseInt(args[0]);  // node id through args
         String configurationFileName = args[1];
-        Logger.initLogger(GlobalConfiguration.getLogFileName(id, configurationFileName));
-        GlobalConfiguration.setupApplicationEnvironment(configurationFileName, id); // parse the i/p and updates the neighbours and size of neighbours. Doesn't return anything
+        Logger.initLogger(ConfigurationClass.getLogFileName(id, configurationFileName));
+        ConfigurationClass.setupApplicationEnvironment(configurationFileName, id); // parse the i/p and updates the neighbours and size of neighbours. Doesn't return anything
 
         Application cNode = new Application();
         try {
@@ -126,10 +126,10 @@ public class Application {
             cNode.launchReceiverThreads();
             cNode.launchSenderThread();
 
-            GlobalConfiguration.set_active_status(id % 2 == 0);
+            ConfigurationClass.set_active_status(id % 2 == 0);
             cNode.termDetector();
 
-            while(!GlobalConfiguration.is_system_terminated()) {
+            while(!ConfigurationClass.is_system_terminated()) {
             }
 
             Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);

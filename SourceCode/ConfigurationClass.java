@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.nio.file.Paths;
 
-public class GlobalConfiguration {
+public class ConfigurationClass {
     private static final char COMMENT = '#';
     private static final HashMap<Integer, NodeDetails> nodeMap = new HashMap<>();
     private static ArrayList<Integer> neighborNodes = new ArrayList<>();
@@ -31,10 +31,10 @@ public class GlobalConfiguration {
     public static HashMap<Integer, NodeDetails> getNodeMap() {
         return nodeMap;
     }
-    public static ArrayList<local_state> local = new ArrayList<>();
+    public static ArrayList<ProcessState> local = new ArrayList<>();
 
     public static String displayGlobalClock() {
-        StringBuilder builder = new StringBuilder("VectorClock : [ ");
+        StringBuilder builder = new StringBuilder("VectorClock -> [ ");
         for(int i = 0; i < vector_clock.length; i++) {
             builder.append(vector_clock[i] + " ");
         }
@@ -46,15 +46,12 @@ public class GlobalConfiguration {
     public static synchronized int get_sent_msg_count() {
         return sent_msg_count;
     }
-
-    public static synchronized void inc_sent_msg_count() {
-        sent_msg_count++;
-    }
-
     public static synchronized int get_rcv_msg_count() {
         return received_msg_count;
     }
-
+    public static synchronized void inc_sent_msg_count() {
+        sent_msg_count++;
+    }
     public static synchronized void inc_rcv_msg_count() {
         received_msg_count++;
     }
@@ -120,20 +117,20 @@ public class GlobalConfiguration {
         recvd_mark_count++;
     }
 
-    public static synchronized ArrayList<local_state> getLocalStateAll() {
+    public static synchronized ArrayList<ProcessState> getLocalStateAll() {
         return local;
     }
 
-    public static synchronized void addLocalStateAll(ArrayList<local_state> payload) {
+    public static synchronized void addLocalStateAll(ArrayList<ProcessState> payload) {
         local.addAll(payload);
     }
 
-    public static synchronized void add_localstate(local_state payload) {
+    public static synchronized void add_localstate(ProcessState payload) {
         local.add(payload);
     }
 
     public static void setupApplicationEnvironment(String configFileName, int id) {
-        GlobalConfiguration.id = id;
+        ConfigurationClass.id = id;
         Scanner lineScanner;
         try (Scanner scanner = new Scanner(new File(configFileName))) {
             String input = getNextValidInputLine(scanner);
@@ -141,14 +138,14 @@ public class GlobalConfiguration {
             lineScanner = new Scanner(input);
 
             int clusterSize = lineScanner.nextInt();
-            GlobalConfiguration.map_size = clusterSize;
-            GlobalConfiguration.vector_clock = new int[clusterSize];
+            ConfigurationClass.map_size = clusterSize;
+            ConfigurationClass.vector_clock = new int[clusterSize];
 
-            GlobalConfiguration.minActive = lineScanner.nextInt();
-            GlobalConfiguration.maxActive = lineScanner.nextInt();
-            GlobalConfiguration.minSendDelay = lineScanner.nextInt();
-            GlobalConfiguration.delay_snap = lineScanner.nextInt();
-            GlobalConfiguration.maxNumber = lineScanner.nextInt();
+            ConfigurationClass.minActive = lineScanner.nextInt();
+            ConfigurationClass.maxActive = lineScanner.nextInt();
+            ConfigurationClass.minSendDelay = lineScanner.nextInt();
+            ConfigurationClass.delay_snap = lineScanner.nextInt();
+            ConfigurationClass.maxNumber = lineScanner.nextInt();
             lineScanner.close();
 
             input = getNextValidInputLine(scanner);
@@ -210,9 +207,10 @@ public class GlobalConfiguration {
                 lineNumber++;
             }
             neighborNodes = neighbors;
-            GlobalConfiguration.number_of_neighbours = neighbors.size();
+            ConfigurationClass.number_of_neighbours = neighbors.size();
 
         } catch (IOException e) {
+            System.out.println("Exception Raised!");
             e.printStackTrace();
         }
     }
@@ -237,7 +235,7 @@ public class GlobalConfiguration {
 
     public static String getLogFileName(final int nodeId, final String configFileName) {
         String fileName = Paths.get(configFileName).getFileName().toString();
-        return String.format("%s-%s.out", 
+        return String.format("%s_%s.out", 
                 fileName.substring(0, fileName.lastIndexOf('.')), nodeId);
     }
 

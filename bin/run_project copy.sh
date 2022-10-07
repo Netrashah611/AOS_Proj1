@@ -1,1 +1,0 @@
-java Application  $1 $2

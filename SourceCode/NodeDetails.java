@@ -1,13 +1,8 @@
 import java.util.Objects;
 
-/**
- * Class to represent node connection information
-
- */
 public class NodeDetails {
-    private final int portNo;
-
     private final String hostName;
+    private final int portNo;
 
     public NodeDetails(final String hostName, final int portNo) {
         this.portNo = portNo;
