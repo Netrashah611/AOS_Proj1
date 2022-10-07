@@ -16,7 +16,7 @@ public class TermDetector implements Runnable {
     }
 
     public void sendMarkerMessages() {
-        Logger.logMessage("Initiating snapshot...");
+        Logger.logMessage("Initiating snapshot !");
         // Add own local state to the received local state list
         int[] localClock = new int[TOTAL_NODE_COUNT];
         synchronized (ConfigurationClass.vector_clock) {
@@ -33,7 +33,7 @@ public class TermDetector implements Runnable {
     }
 
     private void sendFinishMessages() {
-        Logger.logMessage("Sending finish messages...");
+        Logger.logMessage("Sending the finish messages !");
         broadcastMessage(5);
     }
 
@@ -59,21 +59,21 @@ public class TermDetector implements Runnable {
             TreeSet<ProcessState> replyPayloadList = new TreeSet<>(Comparator.comparingInt(ProcessState::getId));
             replyPayloadList.addAll(ConfigurationClass.getLocalStateAll());
 
-            StringBuilder builder = new StringBuilder("--------------Snapshot---------------\n");
+            StringBuilder builder = new StringBuilder("_________Snapshot_________\n");
             for (ProcessState p : replyPayloadList) {
                 builder.append(p.toString() + "\n");
             }
-            builder.append("-------------------------------------");
+            builder.append("_______________");
             Logger.logMessage(builder.toString());
 
             if (is_system_terminated(replyPayloadList)) {
-                Logger.logMessage("********************System terminated...");
+                Logger.logMessage("%%%%%%%%%%% System Terminated %%%%%%%%%%% ");
                 sendFinishMessages();
                 ConfigurationClass.setIsSystemTerminated(true);
                 break;
             }
             else {
-                Logger.logMessage("********************NOT terminated...");
+                Logger.logMessage(" %%%%%%%%%%% Not Terminated %%%%%%%%%%%");
             }
 
             // Reset snapshot variables
@@ -81,10 +81,10 @@ public class TermDetector implements Runnable {
 
             // If system not yet terminated, sleep for constant time
             try {
-                Logger.logMessage("Snapshot process sleeping... " + SNAPSHOT_DELAY);
+                Logger.logMessage("Snapshot process sleeping! " + SNAPSHOT_DELAY);
                 Thread.sleep(SNAPSHOT_DELAY);
             } catch (InterruptedException e) {
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised : Interrupted while trying to sleep!");
                 Thread.currentThread().interrupt();
                 e.printStackTrace();
             }

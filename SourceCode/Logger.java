@@ -9,7 +9,7 @@ public class Logger {
             try {
                 writer = new FileWriter(logFileName);
             } catch (IOException ex) {
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised! Error initializing the logger");
                 System.err.println("Error initializing the logger : " + Arrays.toString(ex.getStackTrace()));
             }
         }
@@ -26,7 +26,7 @@ public class Logger {
             writer.flush();
             counter++;
         } catch (IOException e) {
-            System.out.println("Exception Raised!");
+            System.out.println("Exception Raised! Error logging the message");
             System.err.println("Error logging the message : " + message);
         }
     }

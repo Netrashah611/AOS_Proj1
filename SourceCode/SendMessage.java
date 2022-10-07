@@ -82,14 +82,14 @@ public class SendMessage implements Runnable {
                     break;
                 }
             } catch (IOException e) {
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised : IO while sending message!");
                 e.printStackTrace();
             }
 
             try {
                 Thread.sleep(MIN_SEND_DELAY);
             } catch (InterruptedException exp) {
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised : Interrupted while sending  message!");
                 Thread.currentThread().interrupt();
                 exp.printStackTrace();
             }
