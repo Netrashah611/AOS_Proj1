@@ -30,17 +30,23 @@ public class Application {
         ThreadListener.start();
         Thread.sleep(3000L);
 
-        for (Integer nodeId : neighbors) {
-            if (NetworkOperations.hasSocketEntry(nodeId) || nodeId <= id) {
-                continue;
-            }
-            createSocket(nodeId);
-        }
+        generateSocketsForAllNeighbors();
+
         while (NetworkOperations.getSocketMapSize() < neighbors.size()) {
             System.out.println("Waiting");
             Thread.sleep(3000L);
         }
         ThreadListener.interrupt();
+    }
+
+    private void generateSocketsForAllNeighbors() {
+        int index = 0;
+        while (index < neighbors.size()) {
+            if (!NetworkOperations.hasSocketEntry(neighbors.get(index)) && neighbors.get(index) > id) {
+                createSocket(neighbors.get(index));
+            }
+            index++;
+        }
     }
 
     //dummy
