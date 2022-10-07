@@ -1,0 +1,41 @@
+ Node -> 1  Host Node -> 10.176.69.33:5678
+  Neighbor Nodes -> [0]  Node Lists -> {0=10.176.69.32:3332
+, 1=10.176.69.33:5678
+}
+Connected : 0
+Received application message : Id : 0 Data : [1 0] Type : 1
+Merged clock : VectorClock : [ 1 1 ]
+Becoming active...
+Recording state : 1 1
+Marker message received from 0... BROADCAST
+Expecting replies = 0
+Received expected number of replies, send cumulative local states
+Send snapshot reply to 0 ==> Message : Id : 1 Data : [1 1] Type : 3
+Received application message : Id : 0 Data : [2 0] Type : 1
+Merged clock : VectorClock : [ 2 2 ]
+Already active...
+Received application message : Id : 0 Data : [3 0] Type : 1
+Merged clock : VectorClock : [ 3 3 ]
+Already active...
+Received application message : Id : 0 Data : [4 0] Type : 1
+Merged clock : VectorClock : [ 4 4 ]
+Already active...
+Received application message : Id : 0 Data : [5 0] Type : 1
+Merged clock : VectorClock : [ 5 5 ]
+Already active...
+Received application message : Id : 0 Data : [6 0] Type : 1
+Merged clock : VectorClock : [ 6 6 ]
+Already active...
+Received application message : Id : 0 Data : [7 0] Type : 1
+Merged clock : VectorClock : [ 7 7 ]
+Already active...
+Recording state : 7 7
+Marker message received from 0... BROADCAST
+Expecting replies = 0
+Received expected number of replies, send cumulative local states
+Send snapshot reply to 0 ==> Message : Id : 1 Data : [7 7] Type : 3
+Recording state : 7 7
+Marker message received from 0... BROADCAST
+Expecting replies = 0
+Received expected number of replies, send cumulative local states
+Send snapshot reply to 0 ==> Message : Id : 1 Data : [7 7] Type : 3

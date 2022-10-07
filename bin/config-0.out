@@ -1,0 +1,33 @@
+ Node -> 0  Host Node -> 10.176.69.32:3332
+  Neighbor Nodes -> [1]  Node Lists -> {0=10.176.69.32:3332
+, 1=10.176.69.33:5678
+}
+Socket connection in progress for 1
+Successfully created a socket connection -> 1
+Initiating snapshot...
+1 0
+Received LOCAL_STATE reply from 1 ==> Received payload : [1 1]
+--------------Snapshot---------------
+1 0
+1 1
+-------------------------------------
+********************NOT terminated...
+Snapshot process sleeping... 2000
+Initiating snapshot...
+7 0
+Received LOCAL_STATE reply from 1 ==> Received payload : [7 7]
+--------------Snapshot---------------
+7 0
+7 7
+-------------------------------------
+********************NOT terminated...
+Snapshot process sleeping... 2000
+Initiating snapshot...
+7 0
+Received LOCAL_STATE reply from 1 ==> Received payload : [7 7]
+--------------Snapshot---------------
+7 0
+7 7
+-------------------------------------
+********************System terminated...
+Sending finish messages...

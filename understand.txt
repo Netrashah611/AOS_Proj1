@@ -1,0 +1,1 @@
+addSocketEntry will update the socketmap with id and respective socket
