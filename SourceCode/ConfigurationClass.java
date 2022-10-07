@@ -210,7 +210,7 @@ public class ConfigurationClass {
             ConfigurationClass.number_of_neighbours = neighbors.size();
 
         } catch (IOException e) {
-            System.out.println("Exception Raised!");
+            System.out.println("Exception Raised! Couldn't Scan file");
             e.printStackTrace();
         }
     }

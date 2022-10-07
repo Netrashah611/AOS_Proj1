@@ -19,7 +19,7 @@ public class Postman implements Runnable {
                 outputStream.writeObject(message);
             }
         } catch (IOException e) {
-            System.out.println("Exception Raised!");
+            System.out.println("Exception Raised! Couldn't deliver the message");
             e.printStackTrace();
         }
     }

@@ -31,27 +31,27 @@ public class Listener implements Runnable {
                     ByteBuffer bytebuff = ByteBuffer.wrap(buff);
                     int nodeId = bytebuff.getInt();
                     connector = nodeId;
-                    Logger.logMessage("Connected -" + nodeId);
+                    Logger.logMessage("Connected - " + nodeId);
 
                     NetworkOperations.addSToSocketEntry(nodeId, connectionSocket);
                     NetworkOperations.addInputStreamEntry(nodeId, oiStream);
                     NetworkOperations.addOutputStreamEntry(nodeId, new ObjectOutputStream(connectionSocket.getOutputStream()));
 
                 } catch (IOException e) {
-                    System.out.println("Exception Raised!");
-                    Logger.logMessage(connector + " - Listener : " + e.getMessage());
+                    System.out.println("Exception Raised! Couldn't establish connection");
+                    Logger.logMessage(connector + " - Listener - " + e.getMessage());
                     e.printStackTrace();
                 }
             }
         } catch (Exception e) {
-            Logger.logMessage(connector + " - Listener : " + e.getMessage());
+            Logger.logMessage(connector + " - Listener - " + e.getMessage());
             e.printStackTrace();
         } finally {
             try {
                 listener_socket.close();
             } catch (IOException e) {
                 
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised! : IO");
                 e.printStackTrace();
             }
         }

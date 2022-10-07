@@ -2,14 +2,14 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class receiveMessage implements Runnable {
-
-    private static final int ID = ConfigurationClass.id;
-    private static final int TOTAL_NODE_COUNT = ConfigurationClass.map_size;
-    private final ObjectInputStream inputStream;
     private final ArrayList<Integer> neighbors;
     private final int neighborCount;
     private final int expectedSnapshotReplies;
     public volatile boolean is_running_flag = true;
+    private static final int ID = ConfigurationClass.id;
+    private static final int TOTAL_NODE_COUNT = ConfigurationClass.map_size;
+    private final ObjectInputStream inputStream;
+    
 
     public receiveMessage(final ObjectInputStream inputStream,
             final ArrayList<Integer> neighbors) {
@@ -38,7 +38,7 @@ public class receiveMessage implements Runnable {
                         handleSnapshotReplyMessage(message);
                 }
             } catch (IOException | ClassNotFoundException e) {
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised while handling the message!");
                 e.printStackTrace();
             }
         }
@@ -68,8 +68,7 @@ public class receiveMessage implements Runnable {
         else {
             // LOCAL_STATE type
             ConfigurationClass.addLocalStateAll(message.getData());
-            Logger.logMessage("Received process state reply from " + message.getId()
-                    + " -> Received payload : " + message.getData());
+            Logger.logMessage("Received process state reply from " + message.getId() + " -> Received payload : " + message.getData());
         }
         // Check if all expected replies are received
         if((ConfigurationClass.getReceivedSnapshotReplyCount() == expectedSnapshotReplies)) { 
@@ -86,8 +85,7 @@ public class receiveMessage implements Runnable {
 
                 MessageModel replyStateMsg = new MessageModel(ID, snapshotPayload, 3);
                 int markerSenderNode = ConfigurationClass.getMarkerSender();
-                Logger.logMessage("Send snapshot reply to " + markerSenderNode
-                        + " -> Message : " + replyStateMsg);
+                Logger.logMessage("Send snapshot reply to " + markerSenderNode + " -> Message : " + replyStateMsg);
                 launchSnapshotSender(markerSenderNode, replyStateMsg);
 
             }
@@ -95,33 +93,26 @@ public class receiveMessage implements Runnable {
         }
     }
 
-    /*
-     <pre>Processes incoming application message
-     Merge the piggybacked vector clock from the message 
-     and become active if node satisfies predefined criteria<pre>
-     @param message {@link MessageModel}
-     */
     private void handleApplicationMessage(MessageModel message) {
         // Application message
         ConfigurationClass.inc_rcv_msg_count();
         mergeVectorClocks(message);
 
-        Logger.logMessage("Received application message : " + message
-                + "\nMerged clock : " + ConfigurationClass.displayGlobalClock());
+        Logger.logMessage("Received Application message : " + message + "\nMerged clock : " + ConfigurationClass.displayGlobalClock());
 
         if (ConfigurationClass.check_active()) {
             // Already active, ignore the message
-            Logger.logMessage("Already active...");
+            Logger.logMessage("Already active ! ");
             return;
         }
         if (ConfigurationClass.get_sent_msg_count() >= ConfigurationClass.maxNumber) {
             // Cannot become active, so ignore
-            Logger.logMessage("Reached max send limit... cannot become active");
+            Logger.logMessage("Maximum send limit reached, can not become active");
             return;
         }
 
         // Can become active
-        Logger.logMessage("Becoming active...");
+        Logger.logMessage("Becoming active !");
         ConfigurationClass.set_active_status(true);
     }
 
@@ -130,7 +121,7 @@ public class receiveMessage implements Runnable {
 
         if (ConfigurationClass.recmark.contains(message.getMessageId()) || ID == 0) {
             // Send ignore message
-            Logger.logMessage("Marker message received from " + message.getId() + "... IGNORE");
+            Logger.logMessage("Marker message received from " + message.getId() + " -- Ignore !");
             MessageModel replyMessage =  new MessageModel(ID, null, 4);
             launchSnapshotSender(message.getId(), replyMessage);
         }
@@ -147,22 +138,20 @@ public class receiveMessage implements Runnable {
             ProcessState myPayload = new ProcessState(ID, localClock,
                     ConfigurationClass.check_active(), ConfigurationClass.get_sent_msg_count(),
                     ConfigurationClass.get_rcv_msg_count());
-            Logger.logMessage("Recording state : " + myPayload.toString());
+            Logger.logMessage("Recording State: " + myPayload.toString());
             ConfigurationClass.add_localstate(myPayload);
 
             ConfigurationClass.setMarkerSender(message.getId());
-            Logger.logMessage("Marker message received from " + message.getId() + "... BROADCAST\n"
-                    + "Expecting replies = " + expectedSnapshotReplies);
+            Logger.logMessage("Marker message received from " + message.getId() + "-- BROADCAST\n" + "Expecting replies = " + expectedSnapshotReplies);
             if(expectedSnapshotReplies == 0) {
                 // Send consolidated local state reply
-                Logger.logMessage("Received expected number of replies, send cumulative local states");
+                Logger.logMessage("Received expected number of replies, send cumulative process states");
                 ArrayList<ProcessState> snapshotPayload = new ArrayList<>();
                 snapshotPayload.addAll(ConfigurationClass.getLocalStateAll());
 
                 MessageModel replyStateMsg = new MessageModel(ID, snapshotPayload, 3);
                 int markerSenderNode = ConfigurationClass.getMarkerSender();
-                Logger.logMessage("Send snapshot reply to " + markerSenderNode
-                        + " -> Message : " + replyStateMsg);
+                Logger.logMessage("Send snapshot reply to " + markerSenderNode + " -> Message : " + replyStateMsg);
                 launchSnapshotSender(markerSenderNode, replyStateMsg);
 
                 return;
@@ -214,7 +203,7 @@ public class receiveMessage implements Runnable {
                     outputStream.writeObject(message);
                 }
             } catch (IOException e) {
-                System.out.println("Exception Raised!");
+                System.out.println("Exception Raised: IO while sending snapshot !");
                 e.printStackTrace();
             }
         }
