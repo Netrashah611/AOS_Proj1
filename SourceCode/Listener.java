@@ -1,21 +1,13 @@
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
-/*
- Listener thread for connection requests from other nodes.
- It accepts a connection (if not already established) and adds it into global connection maps
- */
+
 public class Listener implements Runnable {
-    private final ServerSocket listener_socket;
-
-    private final ArrayList<Integer> neighbors;
-
     private int connector;
+    private final ServerSocket listener_socket;
+    private final ArrayList<Integer> neighbors;
 
     public Listener(final ServerSocket listener_socket, final ArrayList<Integer> neighbors) {
         this.listener_socket = listener_socket;
@@ -33,19 +25,20 @@ public class Listener implements Runnable {
                 try {
                     connectionSocket = listener_socket.accept();
 
-                    ObjectInputStream ois = new ObjectInputStream(connectionSocket.getInputStream());
+                    ObjectInputStream oiStream = new ObjectInputStream(connectionSocket.getInputStream());
                     byte[] buff = new byte[4];
-                    ois.read(buff, 0, 4);
+                    oiStream.read(buff, 0, 4);
                     ByteBuffer bytebuff = ByteBuffer.wrap(buff);
                     int nodeId = bytebuff.getInt();
                     connector = nodeId;
-                    Logger.logMessage("Connected : " + nodeId);
+                    Logger.logMessage("Connected -" + nodeId);
 
                     NetworkOperations.addSToSocketEntry(nodeId, connectionSocket);
-                    NetworkOperations.addInputStreamEntry(nodeId, ois);
+                    NetworkOperations.addInputStreamEntry(nodeId, oiStream);
                     NetworkOperations.addOutputStreamEntry(nodeId, new ObjectOutputStream(connectionSocket.getOutputStream()));
 
                 } catch (IOException e) {
+                    System.out.println("Exception Raised!");
                     Logger.logMessage(connector + " - Listener : " + e.getMessage());
                     e.printStackTrace();
                 }
@@ -57,6 +50,8 @@ public class Listener implements Runnable {
             try {
                 listener_socket.close();
             } catch (IOException e) {
+                
+                System.out.println("Exception Raised!");
                 e.printStackTrace();
             }
         }

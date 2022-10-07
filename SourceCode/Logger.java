@@ -1,17 +1,15 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 
 public class Logger {
-    private static FileWriter writer;
-
     public static int counter = 0;
-
+    private static FileWriter writer;
     public static void initLogger(String logFileName) {
         if (writer == null) {
             try {
                 writer = new FileWriter(logFileName);
             } catch (IOException ex) {
+                System.out.println("Exception Raised!");
                 System.err.println("Error initializing the logger : " + Arrays.toString(ex.getStackTrace()));
             }
         }
@@ -19,7 +17,7 @@ public class Logger {
 
     public static synchronized void logMessage(String message) {
         if (writer == null) {
-            initLogger("config-log.out");
+            initLogger("config_log.out");
         }
 
         try {
@@ -28,6 +26,7 @@ public class Logger {
             writer.flush();
             counter++;
         } catch (IOException e) {
+            System.out.println("Exception Raised!");
             System.err.println("Error logging the message : " + message);
         }
     }

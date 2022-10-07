@@ -1,11 +1,6 @@
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
-import java.io.ObjectOutputStream;
-/*
- Receiver thread for the node which receives tokens sent to a given input stream.
- It processes the received tokens and forwards accordingly.
- */
+
 public class receiveMessage implements Runnable {
 
     private static final int ID = GlobalConfiguration.id;
@@ -43,6 +38,7 @@ public class receiveMessage implements Runnable {
                         handleSnapshotReplyMessage(message);
                 }
             } catch (IOException | ClassNotFoundException e) {
+                System.out.println("Exception Raised!");
                 e.printStackTrace();
             }
         }
@@ -60,27 +56,20 @@ public class receiveMessage implements Runnable {
         is_running_flag = false;
     }
 
-    /*
-     <pre>Processes incoming snapshot reply message
-      If type LOCAL_STATE - Adds received payload to the global payload list
-      If type IGNORED - ignore the message
-      When all the expected replies are received,
-      send the consolidated payload to the node from which it received the marker message<pre>
-      @param message {@link MessageModel}
-     */
+
     private void handleSnapshotReplyMessage(MessageModel message) {
         // Increment received reply count
         GlobalConfiguration.incrementReceivedSnapshotReplies();
 
         if(message.getMessageType() == 4) {
-            Logger.logMessage("Received IGNORED reply from " + message.getId());
+            Logger.logMessage("Received reply from " + message.getId() + "of type ignore");
             // Do nothing
         }
         else {
             // LOCAL_STATE type
             GlobalConfiguration.addLocalStateAll(message.getData());
-            Logger.logMessage("Received LOCAL_STATE reply from " + message.getId()
-                    + " ==> Received payload : " + message.getData());
+            Logger.logMessage("Received process state reply from " + message.getId()
+                    + " -> Received payload : " + message.getData());
         }
         // Check if all expected replies are received
         if((GlobalConfiguration.getReceivedSnapshotReplyCount() == expectedSnapshotReplies)) { 
@@ -91,14 +80,14 @@ public class receiveMessage implements Runnable {
             }
             else {
                 // Send consolidated local state reply
-                Logger.logMessage("Received expected number of replies, send cumulative local states");
+                Logger.logMessage("Expected replies arrived, send cumulative process states");
                 ArrayList<local_state> snapshotPayload = new ArrayList<>();
                 snapshotPayload.addAll(GlobalConfiguration.getLocalStateAll());
 
                 MessageModel replyStateMsg = new MessageModel(ID, snapshotPayload, 3);
                 int markerSenderNode = GlobalConfiguration.getMarkerSender();
                 Logger.logMessage("Send snapshot reply to " + markerSenderNode
-                        + " ==> Message : " + replyStateMsg);
+                        + " -> Message : " + replyStateMsg);
                 launchSnapshotSender(markerSenderNode, replyStateMsg);
 
             }
@@ -178,7 +167,7 @@ public class receiveMessage implements Runnable {
                 MessageModel replyStateMsg = new MessageModel(ID, snapshotPayload, 3);
                 int markerSenderNode = GlobalConfiguration.getMarkerSender();
                 Logger.logMessage("Send snapshot reply to " + markerSenderNode
-                        + " ==> Message : " + replyStateMsg);
+                        + " -> Message : " + replyStateMsg);
                 launchSnapshotSender(markerSenderNode, replyStateMsg);
 
                 return;
@@ -193,10 +182,7 @@ public class receiveMessage implements Runnable {
         }
     }
 
-    /*
-     Merge the incoming message's piggybacked vector clock into own global clock
-     @param message {@link MessageModel}
-     */
+
     private void mergeVectorClocks(MessageModel message) {
         int[] piggybackVectorClock = message.getData().get(0).getVectorClock();
         synchronized (GlobalConfiguration.vector_clock) {
@@ -207,12 +193,7 @@ public class receiveMessage implements Runnable {
         }
     }
 
-    /*
-     Launch {@link SnapshotSender} thread and wait for it to finish.
-     It sends given snapshot reply message to given node.
-     @param id - neighbor node id
-     @param message {@link MessageModel}
-     */
+
     private void launchSnapshotSender(int id, MessageModel message) {
         SnapshotSender snapshotSender = new SnapshotSender(id, message);
         Thread thread = new Thread(snapshotSender);
@@ -238,6 +219,7 @@ public class receiveMessage implements Runnable {
                     outputStream.writeObject(message);
                 }
             } catch (IOException e) {
+                System.out.println("Exception Raised!");
                 e.printStackTrace();
             }
         }

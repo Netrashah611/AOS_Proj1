@@ -1,16 +1,7 @@
 import java.io.Serializable;
-
-
-/**
- Class that stores the local state of a node
- */
 public class local_state implements Serializable {
 
-    /*
-     Default serialVersionUID
-     */
     private static final long serialVersionUID = 1L;
-
     private int id;
     private int[] vectorClock;
     private boolean isActive;

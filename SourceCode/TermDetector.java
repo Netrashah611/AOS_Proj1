@@ -84,6 +84,7 @@ public class TermDetector implements Runnable {
                 Logger.logMessage("Snapshot process sleeping... " + SNAPSHOT_DELAY);
                 Thread.sleep(SNAPSHOT_DELAY);
             } catch (InterruptedException e) {
+                System.out.println("Exception Raised!");
                 Thread.currentThread().interrupt();
                 e.printStackTrace();
             }

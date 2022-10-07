@@ -34,7 +34,7 @@ public class GlobalConfiguration {
     public static ArrayList<local_state> local = new ArrayList<>();
 
     public static String displayGlobalClock() {
-        StringBuilder builder = new StringBuilder("VectorClock : [ ");
+        StringBuilder builder = new StringBuilder("VectorClock -> [ ");
         for(int i = 0; i < vector_clock.length; i++) {
             builder.append(vector_clock[i] + " ");
         }
@@ -46,15 +46,12 @@ public class GlobalConfiguration {
     public static synchronized int get_sent_msg_count() {
         return sent_msg_count;
     }
-
-    public static synchronized void inc_sent_msg_count() {
-        sent_msg_count++;
-    }
-
     public static synchronized int get_rcv_msg_count() {
         return received_msg_count;
     }
-
+    public static synchronized void inc_sent_msg_count() {
+        sent_msg_count++;
+    }
     public static synchronized void inc_rcv_msg_count() {
         received_msg_count++;
     }
@@ -213,6 +210,7 @@ public class GlobalConfiguration {
             GlobalConfiguration.number_of_neighbours = neighbors.size();
 
         } catch (IOException e) {
+            System.out.println("Exception Raised!");
             e.printStackTrace();
         }
     }
@@ -237,7 +235,7 @@ public class GlobalConfiguration {
 
     public static String getLogFileName(final int nodeId, final String configFileName) {
         String fileName = Paths.get(configFileName).getFileName().toString();
-        return String.format("%s-%s.out", 
+        return String.format("%s_%s.out", 
                 fileName.substring(0, fileName.lastIndexOf('.')), nodeId);
     }
 

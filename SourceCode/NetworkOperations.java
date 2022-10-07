@@ -1,11 +1,8 @@
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
 
-/*
- Class to store and access global scope network communication variables
- */
+
 public class NetworkOperations {
 
     protected static HashMap<Integer, Socket> socketMap = new HashMap<>();
