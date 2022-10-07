@@ -51,9 +51,8 @@ public class Application {
         }
     }
 
-    //dummy
-    public static synchronized void printaddedSoc(int index, Socket socket) {
-        System.out.println("Socket Added"+index+socket);
+    public static synchronized void printdetails(int index, Socket socket) {
+        System.out.println("Socket"+index+socket);
     }
 
     private void createSocket(int nodeId) throws IOException {
