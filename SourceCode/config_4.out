@@ -1,0 +1,74 @@
+ Node -> 4  Host Node -> 10.176.69.37-5688
+  Neighbor Nodes -> [0, 3]  Node Lists -> {0=10.176.69.32-3332
+, 1=10.176.69.34-5678
+, 2=10.176.69.35-5231
+, 3=10.176.69.36-3342
+, 4=10.176.69.37-5688
+}
+Connected - 0
+Connected - 3
+Received Application message : Id->3 Data -> [0 15 13 9 0] Type -> 1
+Merged clock : VectorClock -> [ 0 15 13 9 1 ]
+Becoming active !
+Received Application message : Id->3 Data -> [0 18 14 13 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 14 13 2 ]
+Already active ! 
+Received Application message : Id->3 Data -> [0 18 14 14 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 14 14 3 ]
+Already active ! 
+Recording State: 0 18 14 14 3
+Marker message received from 3-- BROADCAST
+Expecting replies = 1
+Received Application message : Id->0 Data -> [5 8 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 5 18 14 14 4 ]
+Already active ! 
+Marker message received from 0 -- Ignore !
+Received Application message : Id->0 Data -> [6 8 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 6 18 14 14 5 ]
+Already active ! 
+Received Application message : Id->0 Data -> [8 8 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 8 18 14 14 6 ]
+Already active ! 
+Received Application message : Id->0 Data -> [9 8 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 9 18 14 14 7 ]
+Already active ! 
+Received Application message : Id->0 Data -> [12 21 15 0 0] Type -> 1
+Merged clock : VectorClock -> [ 12 21 15 14 8 ]
+Already active ! 
+Received Application message : Id->0 Data -> [14 23 15 0 0] Type -> 1
+Merged clock : VectorClock -> [ 14 23 15 14 9 ]
+Already active ! 
+Received Application message : Id->0 Data -> [16 25 15 15 0] Type -> 1
+Merged clock : VectorClock -> [ 16 25 15 15 10 ]
+Already active ! 
+Received reply from 0of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 3 -> Message : Id->4 Data -> [0 18 14 14 3] Type -> 3
+Received Application message : Id->3 Data -> [0 18 20 20 0] Type -> 1
+Merged clock : VectorClock -> [ 16 25 20 20 11 ]
+Already active ! 
+Received Application message : Id->0 Data -> [18 25 20 20 12] Type -> 1
+Merged clock : VectorClock -> [ 18 25 20 20 13 ]
+Already active ! 
+Received Application message : Id->0 Data -> [19 25 20 20 12] Type -> 1
+Merged clock : VectorClock -> [ 19 25 20 20 15 ]
+Already active ! 
+Received Application message : Id->0 Data -> [22 25 20 20 14] Type -> 1
+Merged clock : VectorClock -> [ 22 25 20 20 16 ]
+Already active ! 
+Received Application message : Id->0 Data -> [25 25 20 20 17] Type -> 1
+Merged clock : VectorClock -> [ 25 25 20 20 18 ]
+Already active ! 
+Recording State: 25 25 20 20 18
+Marker message received from 0-- BROADCAST
+Expecting replies = 1
+Received process state reply from 3 -> Received payload : [0 18 20 24 0]
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->4 Data -> [25 25 20 20 18, 0 18 20 24 0] Type -> 3
+Recording State: 25 25 20 20 21
+Marker message received from 0-- BROADCAST
+Expecting replies = 1
+Marker message received from 3 -- Ignore !
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->4 Data -> [25 25 20 20 21] Type -> 3

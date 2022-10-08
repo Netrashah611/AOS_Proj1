@@ -1,0 +1,164 @@
+ Node -> 3  Host Node -> 10.176.69.36-3342
+  Neighbor Nodes -> [1, 2, 4]  Node Lists -> {0=10.176.69.32-3332
+, 1=10.176.69.34-5678
+, 2=10.176.69.35-5231
+, 3=10.176.69.36-3342
+, 4=10.176.69.37-5688
+}
+Connected - 1
+Connected - 2
+Socket connection in progress for 4
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Successfully created a socket connection : 4
+Received Application message : Id->2 Data -> [0 0 1 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 0 1 1 0 ]
+Becoming active !
+Received Application message : Id->2 Data -> [0 0 2 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 0 2 2 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 0 3 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 0 3 3 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 0 4 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 0 4 4 0 ]
+Already active ! 
+Received Application message : Id->1 Data -> [0 4 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 4 6 5 0 ]
+Already active ! 
+Received Application message : Id->1 Data -> [0 6 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 6 6 6 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 9 8 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 9 8 7 0 ]
+Already active ! 
+Received Application message : Id->1 Data -> [0 15 13 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 15 13 8 0 ]
+Becoming active !
+Received Application message : Id->1 Data -> [0 16 13 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 16 13 10 0 ]
+Already active ! 
+Received Application message : Id->1 Data -> [0 18 14 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 14 12 0 ]
+Already active ! 
+Recording State: 0 18 14 13 0
+Marker message received from 1-- BROADCAST
+Expecting replies = 2
+Marker message received from 2 -- Ignore !
+Received reply from 2of type ignore
+Received Application message : Id->2 Data -> [0 18 20 16 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 20 18 0 ]
+Becoming active !
+Received process state reply from 4 -> Received payload : [0 18 14 14 3]
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 1 -> Message : Id->3 Data -> [0 18 14 13 0, 0 18 14 14 3] Type -> 3
+Recording State: 0 18 20 24 0
+Marker message received from 4-- BROADCAST
+Expecting replies = 2
+Received reply from 1of type ignore
+Marker message received from 2 -- Ignore !
+Marker message received from 1 -- Ignore !
+Received reply from 2of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 4 -> Message : Id->3 Data -> [0 18 20 24 0] Type -> 3
+Marker message received from 2 -- Ignore !
+Marker message received from 4 -- Ignore !
+Recording State: 0 18 20 24 0
+Marker message received from 1-- BROADCAST
+Expecting replies = 2
+Received reply from 2of type ignore
+Received reply from 4of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 1 -> Message : Id->3 Data -> [0 18 20 24 0] Type -> 3

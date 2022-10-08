@@ -1,0 +1,146 @@
+ Node -> 1  Host Node -> 10.176.69.34-5678
+  Neighbor Nodes -> [0, 2, 3]  Node Lists -> {0=10.176.69.32-3332
+, 1=10.176.69.34-5678
+, 2=10.176.69.35-5231
+, 3=10.176.69.36-3342
+, 4=10.176.69.37-5688
+}
+Connected - 0
+Socket connection in progress for 2
+Successfully created a socket connection : 2
+Socket connection in progress for 3
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Retrying socket connection 
+Successfully created a socket connection : 3
+Received Application message : Id->2 Data -> [0 0 5 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 1 5 0 0 ]
+Becoming active !
+Received Application message : Id->2 Data -> [0 0 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 2 6 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 9 9 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 12 9 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 10 11 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 13 11 0 0 ]
+Already active ! 
+Recording State: 0 13 11 0 0
+Marker message received from 0-- BROADCAST
+Expecting replies = 2
+Received Application message : Id->2 Data -> [0 11 13 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 14 13 0 0 ]
+Becoming active !
+Received Application message : Id->2 Data -> [0 11 14 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 17 14 0 0 ]
+Already active ! 
+Received Application message : Id->2 Data -> [0 11 15 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 19 15 0 0 ]
+Already active ! 
+Received Application message : Id->0 Data -> [7 8 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 7 20 15 0 0 ]
+Already active ! 
+Received Application message : Id->0 Data -> [10 8 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 10 22 15 0 0 ]
+Already active ! 
+Received Application message : Id->3 Data -> [0 18 14 15 0] Type -> 1
+Merged clock : VectorClock -> [ 10 24 15 15 0 ]
+Already active ! 
+Received Application message : Id->3 Data -> [0 18 14 17 0] Type -> 1
+Merged clock : VectorClock -> [ 10 26 15 17 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->2 Data -> [0 18 18 16 0] Type -> 1
+Merged clock : VectorClock -> [ 10 27 18 17 0 ]
+Maximum send limit reached, can not become active
+Received process state reply from 2 -> Received payload : [0 16 16 11 0]
+Received Application message : Id->2 Data -> [0 18 19 16 0] Type -> 1
+Merged clock : VectorClock -> [ 10 28 19 17 0 ]
+Maximum send limit reached, can not become active
+Received process state reply from 3 -> Received payload : [0 18 14 13 0, 0 18 14 14 3]
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->1 Data -> [0 13 11 0 0, 0 16 16 11 0, 0 18 14 13 0, 0 18 14 14 3] Type -> 3
+Received Application message : Id->3 Data -> [0 18 20 23 0] Type -> 1
+Merged clock : VectorClock -> [ 10 29 20 23 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->0 Data -> [21 25 20 20 14] Type -> 1
+Merged clock : VectorClock -> [ 21 30 20 23 14 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->0 Data -> [23 25 20 20 14] Type -> 1
+Merged clock : VectorClock -> [ 23 31 20 23 14 ]
+Maximum send limit reached, can not become active
+Recording State: 23 31 20 23 14
+Marker message received from 0-- BROADCAST
+Expecting replies = 2
+Marker message received from 3 -- Ignore !
+Received process state reply from 2 -> Received payload : [0 18 24 24 0]
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->1 Data -> [23 31 20 23 14, 0 18 24 24 0] Type -> 3
+Recording State: 23 31 20 23 14
+Marker message received from 0-- BROADCAST
+Expecting replies = 2
+Received process state reply from 2 -> Received payload : [0 18 24 24 0]
+Received process state reply from 3 -> Received payload : [0 18 20 24 0]
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 0 -> Message : Id->1 Data -> [23 31 20 23 14, 0 18 24 24 0, 0 18 20 24 0] Type -> 3

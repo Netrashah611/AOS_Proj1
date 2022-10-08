@@ -1,0 +1,58 @@
+ Node -> 2  Host Node -> 10.176.69.35-5231
+  Neighbor Nodes -> [1, 3]  Node Lists -> {0=10.176.69.32-3332
+, 1=10.176.69.34-5678
+, 2=10.176.69.35-5231
+, 3=10.176.69.36-3342
+, 4=10.176.69.37-5688
+}
+Connected - 1
+Socket connection in progress for 3
+Successfully created a socket connection : 3
+Received Application message : Id->1 Data -> [0 9 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 9 7 0 0 ]
+Becoming active !
+Received Application message : Id->1 Data -> [0 10 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 10 10 0 0 ]
+Already active ! 
+Received Application message : Id->1 Data -> [0 11 6 0 0] Type -> 1
+Merged clock : VectorClock -> [ 0 11 12 0 0 ]
+Already active ! 
+Received Application message : Id->3 Data -> [0 16 13 11 0] Type -> 1
+Merged clock : VectorClock -> [ 0 16 16 11 0 ]
+Already active ! 
+Recording State: 0 16 16 11 0
+Marker message received from 1-- BROADCAST
+Expecting replies = 1
+Marker message received from 3 -- Ignore !
+Received Application message : Id->3 Data -> [0 18 14 16 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 17 16 0 ]
+Becoming active !
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 1 -> Message : Id->2 Data -> [0 16 16 11 0] Type -> 3
+Received Application message : Id->3 Data -> [0 18 20 19 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 21 19 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->3 Data -> [0 18 20 21 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 22 21 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->3 Data -> [0 18 20 22 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 23 22 0 ]
+Maximum send limit reached, can not become active
+Received Application message : Id->3 Data -> [0 18 20 24 0] Type -> 1
+Merged clock : VectorClock -> [ 0 18 24 24 0 ]
+Maximum send limit reached, can not become active
+Recording State: 0 18 24 24 0
+Marker message received from 1-- BROADCAST
+Expecting replies = 1
+Marker message received from 3 -- Ignore !
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 1 -> Message : Id->2 Data -> [0 18 24 24 0] Type -> 3
+Recording State: 0 18 24 24 0
+Marker message received from 1-- BROADCAST
+Expecting replies = 1
+Received reply from 3of type ignore
+Expected replies arrived, send cumulative process states
+Send snapshot reply to 1 -> Message : Id->2 Data -> [0 18 24 24 0] Type -> 3
+Marker message received from 3 -- Ignore !
