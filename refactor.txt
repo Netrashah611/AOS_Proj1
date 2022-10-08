@@ -1,6 +1,0 @@
-Change enum to Constants
-Merge proj config and global config to Configuration
-Can remove ignore message type
-Create new class for handle message
-Find function for Random generator in SendMessage.java
-Network operations and message model can be merged

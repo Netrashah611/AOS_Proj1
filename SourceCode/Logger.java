@@ -1,3 +1,7 @@
+/*
+ * Class to handle the log message to be written in Log file name
+*/
+
 import java.io.*;
 import java.util.Arrays;
 

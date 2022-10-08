@@ -1,4 +1,4 @@
-# six global parameters (see above)
+# six global parameters given in the requirements
 2 6 10 100 2000 15
 
 
@@ -13,5 +13,5 @@
 #3 10.176.69.35 3342
 #4 localhost 5688
 
-1		# space delimited list of neighbors for node 0
-0 		# space delimited list of neighbors for no
+1		# list of neighbors for node 0
+0 		# space delimited list of neighbors for node 1

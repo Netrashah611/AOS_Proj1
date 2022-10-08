@@ -1,3 +1,11 @@
+// Applcation has the Main file 
+/*
+ * 1. It creates entries for connection sockets, input streams, and output streams in global maps and establishes connections with the neighbors
+ * 2. Adds entries to global maps and requests a socket connection to the input neighbors. 
+ * 3. Starts a thread and gives the sender and recipient threads the thread handle. 
+ * 4. Starts a thread and gives the snapshot-taking thread its handle back.
+*/
+
 import java.io.*;
 import java.util.*;
 import java.nio.*;
@@ -20,22 +28,17 @@ public class Application {
         this.listener_socket = new ServerSocket(host_node.getPortNo()); // staring the server with given port number and connection is established
     }
 
-    // public void initializeNode(int nodeId) throws IOException {
-    //     //code moved to constructor
-    // }
-
     public void createConnection() throws InterruptedException, IOException {
         // Launch listener thread
-        // Connect to all the neighbors with nodeId > own id
         Listener listener = new Listener(listener_socket, neighbors);
         Thread ThreadListener = new Thread(listener);
         ThreadListener.start();
         Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
-
+        // Connect to all the neighbors
         generateSocketsForAllNeighbors();
 
-        while (NetworkOperations.getSocketMapSize() < neighbors.size()) {
-            System.out.println("Waiting to connect with neighbours");
+        while (NetworkOperations.getsocketHashMapSize() < neighbors.size()) {
+            System.out.println("Waiting for all nodes to be initialized");
             Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
         }
         ThreadListener.interrupt();
@@ -44,7 +47,7 @@ public class Application {
     private void generateSocketsForAllNeighbors() throws InterruptedException, IOException {
         int index = 0;
         while (index < neighbors.size()) {
-            if (!NetworkOperations.hasSocketEntry(neighbors.get(index)) && neighbors.get(index) > id) {
+            if (!NetworkOperations.containsSocketEntryInMap(neighbors.get(index)) && neighbors.get(index) > id) {
                 createSocket(neighbors.get(index));
             }
             index++;
@@ -66,13 +69,13 @@ public class Application {
                 System.out.println("Socket Connected !");
                 connected = true;
             } catch (ConnectException ce) {
-                System.out.println("Exception Raised! Couldn't connect socket");
+                System.out.println("Couldn't connect socket, retrying...");
                 Logger.logMessage("Retrying socket connection ");
             }
         }
-        Logger.logMessage("Successfully created a socket connection -> " + nodeId);
+        Logger.logMessage("Successfully created a socket connection : " + nodeId);
 
-        NetworkOperations.addSToSocketEntry(nodeId, sock);
+        NetworkOperations.addSocketToSocketEntry(nodeId, sock);
 
         // add socket's i/p stream to ObjectOutputStream
         addToOutputStream(sock, nodeId);
@@ -83,19 +86,11 @@ public class Application {
         bbuffer.putInt(id);
         ObjectOutputStream ooStream = new ObjectOutputStream(sock.getOutputStream());
         byte[] bytes = bbuffer.array();
-
         ooStream.write(bytes);
         ooStream.flush();
         ooStream.reset();
-        NetworkOperations.addOutputStreamEntry(nodeId, ooStream);
-        NetworkOperations.addInputStreamEntry(nodeId, new ObjectInputStream(sock.getInputStream()));
-    }
-
-    private void launchSenderThread() {
-        // Launch sender thread
-        SendMessage sender = new SendMessage();
-        Thread thread = new Thread(sender);
-        thread.start();
+        NetworkOperations.addOutStreamEntry(nodeId, ooStream);
+        NetworkOperations.addInStreamEntry(nodeId, new ObjectInputStream(sock.getInputStream()));
     }
 
     private void launchReceiverThreads() throws InterruptedException {
@@ -108,6 +103,13 @@ public class Application {
             rcvThreadCollectionArray.add(thread);
         }
         Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
+    }
+
+    private void launchSenderThread() {
+        // Launch sender thread
+        SendMessage sender = new SendMessage();
+        Thread thread = new Thread(sender);
+        thread.start();
     }
 
     @Override
@@ -125,7 +127,6 @@ public class Application {
         Application cNode;
         try {
             cNode = new Application(id);
-            //cNode.initializeNode(id); //initializes and starts server
             Logger.logMessage(cNode.toString()); //prints connection status
             cNode.createConnection();
 
@@ -139,14 +140,13 @@ public class Application {
             }
 
             Thread.sleep(AppConstants.DEFAULT_THREAD_SLEEP_MS);
-            
             System.exit(AppConstants.SUCCESSFULL_PROGRAM_TERMINATION_EXIT_CODE);
 
         } catch (IOException exp) {
-            System.out.println("Exception Raised : IO!");
+            System.out.println("Exception Raised : IO during initialization !");
             exp.printStackTrace();
         } catch (InterruptedException excp) {
-            System.out.println("Exception Raised! : Interrupted");
+            System.out.println("Exception Raised! : Interrupted during initialization");
             Thread.currentThread().interrupt();
             excp.printStackTrace();
         }
@@ -156,7 +156,7 @@ public class Application {
 
     private void termDetector() {
         if (checkInitial) {
-            Thread thread = new Thread(new TermDetector(neighbors));
+            Thread thread = new Thread(new TerminationDetector(neighbors));
             thread.start();
         }
     }

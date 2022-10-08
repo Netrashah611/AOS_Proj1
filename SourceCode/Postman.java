@@ -1,12 +1,13 @@
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+/*
+ * Delivers a given message to the given node
+*/
 
-// Delivers a given message to the given node
+import java.io.*;
 public class Postman implements Runnable {
     private final int nodeId;
-    private final MessageModel message;
+    private final MessageFramework message;
 
-    public Postman(int nodeId, MessageModel message) {
+    public Postman(int nodeId, MessageFramework message) {
         this.nodeId = nodeId;
         this.message = message;
     }

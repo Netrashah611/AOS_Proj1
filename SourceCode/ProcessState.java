@@ -1,24 +1,29 @@
-import java.io.Serializable;
+/*
+ * Class that stores the process/local state of a node
+*/
+
+import java.io.*;
+
 public class ProcessState implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     private int id;
+    private static final long serialVersionUID = 1L;
+    private int sentMessagesCount = -1;
+    private int receivedMessagesCount = -1;
     private int[] vectorClock;
     private boolean isActive;
-    private int sentMsgCount = -1;
-    private int receivedMsgCount = -1;
 
     public ProcessState(final int id,
             final int[] vectorClock,
             final boolean isActive,
-            final int sentMsgCount,
-            final int receivedMsgCount) {
+            final int sentMessagesCount,
+            final int receivedMessagesCount) {
         this.id = id;
         this.vectorClock = new int[vectorClock.length];
         System.arraycopy(vectorClock, 0, this.vectorClock, 0, vectorClock.length);
         this.isActive = isActive;
-        this.sentMsgCount = sentMsgCount;
-        this.receivedMsgCount = receivedMsgCount;
+        this.sentMessagesCount = sentMessagesCount;
+        this.receivedMessagesCount = receivedMessagesCount;
     }
 
     public ProcessState(final int[] vectorClock) {
@@ -30,20 +35,20 @@ public class ProcessState implements Serializable {
         return id;
     }
 
-    public int[] getVectorClock() {
-        return vectorClock;
-    }
-
     public boolean isActive() {
         return isActive;
     }
 
-    public int getSentMsgCount() {
-        return sentMsgCount;
+    public int getreceivedMessagesCount() {
+        return receivedMessagesCount;
     }
 
-    public int getReceivedMsgCount() {
-        return receivedMsgCount;
+    public int getsentMessagesCount() {
+        return sentMessagesCount;
+    }
+
+    public int[] getTheVectorClock() {
+        return vectorClock;
     }
 
     @Override
@@ -53,6 +58,7 @@ public class ProcessState implements Serializable {
             builder.append(vectorClock[i]).append(" ");
         }
         builder.append(vectorClock[vectorClock.length - 1]);
+
         return builder.toString();
     }
 

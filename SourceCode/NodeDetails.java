@@ -1,3 +1,7 @@
+/*
+ * Information about node connections (Host name, port number) is represented here in this class.
+*/
+
 import java.util.Objects;
 
 public class NodeDetails {
@@ -34,6 +38,6 @@ public class NodeDetails {
 
     @Override
     public String toString() {
-        return hostName + ":" + portNo + "\n";
+        return hostName + "-" + portNo + "\n";
     }
 }

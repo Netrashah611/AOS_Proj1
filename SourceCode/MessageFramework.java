@@ -1,8 +1,11 @@
-import java.io.Serializable;
-import java.util.ArrayList;
+/*
+ * Class that represents the communications that the nodes send and receive.
+*/
 
+import java.io.*;
+import java.util.*;
 
-public class MessageModel implements Serializable {
+public class MessageFramework implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private final int messageType;
@@ -10,22 +13,30 @@ public class MessageModel implements Serializable {
     private final int id;
     private final ArrayList<ProcessState> data;
     
-
-    public MessageModel(final int id, final ArrayList<ProcessState> payload, final int messageType) {
+    public MessageFramework(final int id, final ArrayList<ProcessState> payload, final int messageType) {
         this.id = id;
         this.data = payload;
         this.messageType = messageType;
     }
 
-    public MessageModel(final int id, final ArrayList<ProcessState> payload , final int messageType, final int mId) {
+    public MessageFramework(final int id, final ArrayList<ProcessState> payload , final int messageType, final int mId) {
         this.id = id;
         this.data = payload;
         this.messageType = messageType;
         this.messageId = mId;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Id->" + id + " Data -> " + data + " Type -> " + messageType;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public int getMessageId() {
+        return messageId;
     }
 
     public ArrayList<ProcessState> getData() {
@@ -37,13 +48,4 @@ public class MessageModel implements Serializable {
     }
 
     
-
-    public int getMessageId() {
-        return messageId;
-    }
-
-    @Override
-    public String toString() {
-        return "Id->" + id + " Data -> " + data + " Type -> " + messageType;
-    }
 }

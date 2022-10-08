@@ -1,32 +1,39 @@
+/* 
+ * Contains global variables for the environment, messages, and snapshots, and reads configurations.
+ * There is a reset snap function in it.
+ * Sets up necessary environment variables such the machine name and port number
+*/
+
 import java.io.*;
 import java.util.*;
 import java.nio.file.Paths;
 
 public class ConfigurationClass {
-    private static final char COMMENT = '#';
+    
     private static final HashMap<Integer, NodeDetails> nodeMap = new HashMap<>();
     private static ArrayList<Integer> neighborNodes = new ArrayList<>();
     public static int sent_msg_count = 0;
     public static int received_msg_count = 0;
     public static boolean active = false;
+    public static int minActive;
+    public static int maxActive;
     public static boolean snapshotrep = false;
     public static boolean system_terminated = false;
-    public static boolean recvMarkMsg = false;
+    public static HashSet<Integer> recmark = new HashSet<>();
     public static boolean is_recv_snap_reply = false;
     public static int received_snapshot_reply_count = 0;
     public static int send_marker_node;
     public static int recvd_mark_count = 0;
-    public static HashSet<Integer> recmark = new HashSet<>();
     public static final Random RANDOM = new Random();
     public static int id;
     public static long minSendDelay;
-    public static int minActive;
-    public static int maxActive;
-    public static int maxNumber;
     public static int map_size;
     public static int[] vector_clock;
+    public static boolean recvMarkMsg = false;
+    public static int maxNumber;
     public static int number_of_neighbours;
     public static long delay_snap;
+    private static final char COMMENT = '#';
 
     public static HashMap<Integer, NodeDetails> getNodeMap() {
         return nodeMap;
@@ -56,11 +63,7 @@ public class ConfigurationClass {
         received_msg_count++;
     }
 
-    public static synchronized boolean check_active() {
-        return active;
-    }
-
-    public static synchronized int getSentMsgCount() {
+    public static synchronized int getsentMessagesCount() {
         return sent_msg_count;
     }
 
@@ -72,7 +75,10 @@ public class ConfigurationClass {
         return received_msg_count;
     }
 
-    // //not used anywhere
+    public static synchronized boolean check_active() {
+        return active;
+    }
+
     public static synchronized void setmarkermessagerecv(boolean markerReceived) {
         recvMarkMsg = markerReceived;
     }
@@ -117,15 +123,15 @@ public class ConfigurationClass {
         recvd_mark_count++;
     }
 
-    public static synchronized ArrayList<ProcessState> getLocalStateAll() {
+    public static synchronized ArrayList<ProcessState> getProcessStateAll() {
         return local;
     }
 
-    public static synchronized void addLocalStateAll(ArrayList<ProcessState> payload) {
+    public static synchronized void addProcessStateAll(ArrayList<ProcessState> payload) {
         local.addAll(payload);
     }
 
-    public static synchronized void add_localstate(ProcessState payload) {
+    public static synchronized void addProcessState(ProcessState payload) {
         local.add(payload);
     }
 
@@ -140,7 +146,6 @@ public class ConfigurationClass {
             int clusterSize = lineScanner.nextInt();
             ConfigurationClass.map_size = clusterSize;
             ConfigurationClass.vector_clock = new int[clusterSize];
-
             ConfigurationClass.minActive = lineScanner.nextInt();
             ConfigurationClass.maxActive = lineScanner.nextInt();
             ConfigurationClass.minSendDelay = lineScanner.nextInt();
@@ -239,7 +244,6 @@ public class ConfigurationClass {
                 fileName.substring(0, fileName.lastIndexOf('.')), nodeId);
     }
 
-    
     public static synchronized void reset_snap() {
         local.clear();
         local = new ArrayList<>();

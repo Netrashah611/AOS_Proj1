@@ -1,3 +1,9 @@
+/*
+ * Runnable class that  creates threads to manage connection requests from other nodes. 
+ * Adds a connection to the global connection maps after accepting it.
+*/
+
+
 import java.io.*;
 import java.net.*;
 import java.nio.ByteBuffer;
@@ -16,12 +22,14 @@ public class Listener implements Runnable {
 
     @Override
     public void run() {
-        int numOfPeers = neighbors.size();
+        
         Socket connectionSocket;
+
+        int numOfNeighbors = neighbors.size();
 
         try {
             // only establish connection if it is not there in socket map . it should be less than total num of neighbours
-            while (NetworkOperations.getSocketMapSize() < numOfPeers) {
+            while (NetworkOperations.getsocketHashMapSize() < numOfNeighbors) {
                 try {
                     connectionSocket = listener_socket.accept();
 
@@ -33,13 +41,13 @@ public class Listener implements Runnable {
                     connector = nodeId;
                     Logger.logMessage("Connected - " + nodeId);
 
-                    NetworkOperations.addSToSocketEntry(nodeId, connectionSocket);
-                    NetworkOperations.addInputStreamEntry(nodeId, oiStream);
-                    NetworkOperations.addOutputStreamEntry(nodeId, new ObjectOutputStream(connectionSocket.getOutputStream()));
+                    NetworkOperations.addSocketToSocketEntry(nodeId, connectionSocket);
+                    NetworkOperations.addInStreamEntry(nodeId, oiStream);
+                    NetworkOperations.addOutStreamEntry(nodeId, new ObjectOutputStream(connectionSocket.getOutputStream()));
 
                 } catch (IOException e) {
                     System.out.println("Exception Raised! Couldn't establish connection");
-                    Logger.logMessage(connector + " - Listener - " + e.getMessage());
+                    Logger.logMessage(connector + " : Listener - " + e.getMessage());
                     e.printStackTrace();
                 }
             }
