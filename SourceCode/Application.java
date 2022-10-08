@@ -1,4 +1,4 @@
-// Applcation has the Main file 
+// Applcation.java has the Main file 
 /*
  * 1. It creates entries for connection sockets, input streams, and output streams in global maps and establishes connections with the neighbors
  * 2. Adds entries to global maps and requests a socket connection to the input neighbors. 
@@ -81,18 +81,6 @@ public class Application {
         addToOutputStream(sock, nodeId);
     }
 
-    private void addToOutputStream(Socket sock, int nodeId) throws IOException {
-        ByteBuffer bbuffer = ByteBuffer.allocate(4);
-        bbuffer.putInt(id);
-        ObjectOutputStream ooStream = new ObjectOutputStream(sock.getOutputStream());
-        byte[] bytes = bbuffer.array();
-        ooStream.write(bytes);
-        ooStream.flush();
-        ooStream.reset();
-        NetworkOperations.addOutStreamEntry(nodeId, ooStream);
-        NetworkOperations.addInStreamEntry(nodeId, new ObjectInputStream(sock.getInputStream()));
-    }
-
     private void launchReceiverThreads() throws InterruptedException {
         ArrayList<Thread> rcvThreadCollectionArray = new ArrayList<>();
         for (Integer neighborId : neighbors) {
@@ -110,6 +98,18 @@ public class Application {
         SendMessage sender = new SendMessage();
         Thread thread = new Thread(sender);
         thread.start();
+    }
+
+    private void addToOutputStream(Socket sock, int nodeId) throws IOException {
+        ByteBuffer bbuffer = ByteBuffer.allocate(4);
+        bbuffer.putInt(id);
+        ObjectOutputStream ooStream = new ObjectOutputStream(sock.getOutputStream());
+        byte[] bytes = bbuffer.array();
+        ooStream.write(bytes);
+        ooStream.flush();
+        ooStream.reset();
+        NetworkOperations.addOutStreamEntry(nodeId, ooStream);
+        NetworkOperations.addInStreamEntry(nodeId, new ObjectInputStream(sock.getInputStream()));
     }
 
     @Override
